@@ -4,6 +4,7 @@ using System.Net;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
+using SharedTodo.Shared;
 
 namespace SharedTodo.Api;
 
