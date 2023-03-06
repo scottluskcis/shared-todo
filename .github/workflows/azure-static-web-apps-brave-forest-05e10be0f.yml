@@ -24,8 +24,8 @@ jobs:
         with: 
           files: 'src/Client/wwwroot/appsettings.json'
         env:
-          AzureAdB2C__Authority: ${{ secrets.AADB2C_AUTHORITY }}
-          AzureAdB2C__ClientId: ${{ secrets.AADB2C_CLIENTID }}
+          AzureAdB2C.Authority: ${{ secrets.AADB2C_AUTHORITY }}
+          AzureAdB2C.ClientId: ${{ secrets.AADB2C_CLIENTID }}
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
