@@ -1,0 +1,43 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+
+  # client 
+  sharedtodo-client:
+    image: sharedtodo-client
+    build:
+      context: .
+      dockerfile: src/Client/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:5158;http://+:7135
+    ports:
+      - 7135:7135
+      - 5158:5158
+    volumes:
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ~/.aspnet/https:/root/.aspnet/https:ro
+
+  # api
+  # sharetodo-api:
+  #   image: sharedtodo-api
+  #   build:
+  #     context: .
+  #     dockerfile: src/Api/Dockerfile
+  #   ports:
+  #     - 7086:7086
+
+  # # sql db
+  # sqldblocal:
+  #   image: mcr.microsoft.com/azure-sql-edge:latest 
+  #   restart: always
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - MSSQL_USER=SA
+  #     - MSSQL_SA_PASSWORD=MyPass@word
+  #     - MSSQL_PID=Developer 
+  #   ports:
+  #     - 1433:1433
+
