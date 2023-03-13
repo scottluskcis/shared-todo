@@ -1,5 +1,12 @@
 {
+  "trailingSlash": "auto",
   "navigationFallback": {
-      "rewrite": "/index.html"
-  }
+    "rewrite": "/index.html"
+  },
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    }
+  ]
 }
